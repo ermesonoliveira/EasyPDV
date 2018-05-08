@@ -7,6 +7,7 @@ package com.mycompany.varejo.view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,8 +21,12 @@ public class InternalEscolherFinalizadoraVenda extends javax.swing.JInternalFram
     public InternalEscolherFinalizadoraVenda() {
         initComponents();
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((screen.width - this.getWidth())/2, (screen.height - this.getHeight() - this.getHeight()/3) );
+        this.setLocation((screen.width - this.getWidth()) / 2, (screen.height - this.getHeight() - this.getHeight() / 3));
         txtCod.requestFocus();
+    }
+
+    public JTextField getTxtCod() {
+        return txtCod;
     }
 
     /**
@@ -53,7 +58,6 @@ public class InternalEscolherFinalizadoraVenda extends javax.swing.JInternalFram
         jLabel9 = new javax.swing.JLabel();
 
         setClosable(true);
-        setResizable(true);
         setTitle("Finalizadoras");
         setFocusTraversalPolicyProvider(true);
         try {
