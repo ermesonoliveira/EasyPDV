@@ -43,6 +43,7 @@ public class Home extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
         jMenu12 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         painel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -57,6 +58,8 @@ public class Home extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem20 = new javax.swing.JMenuItem();
@@ -95,6 +98,8 @@ public class Home extends javax.swing.JFrame {
         jMenu11.setText("jMenu11");
 
         jMenu12.setText("jMenu12");
+
+        jMenuItem10.setText("jMenuItem10");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -189,6 +194,10 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu10.setText("Movimento");
+
+        jMenuItem14.setText("Balcão Venda");
+        jMenu10.add(jMenuItem14);
+        jMenu10.add(jSeparator2);
 
         jMenuItem9.setText("Compras");
         jMenu10.add(jMenuItem9);
@@ -344,9 +353,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
@@ -362,6 +373,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPanel painel;
     // End of variables declaration//GEN-END:variables
 }
