@@ -5,6 +5,8 @@
  */
 package com.mycompany.varejo.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ermeson
@@ -18,6 +20,7 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState( MAXIMIZED_BOTH );
     }
+    private VendasBalcao balcao;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,6 +199,11 @@ public class Home extends javax.swing.JFrame {
         jMenu10.setText("Movimento");
 
         jMenuItem14.setText("Balcão Venda");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu10.add(jMenuItem14);
         jMenu10.add(jSeparator2);
 
@@ -298,6 +306,16 @@ public class Home extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        if (balcao==null) {
+            balcao = new VendasBalcao();
+            balcao.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "A tela de balcão vendas já está aberta");
+        }
+        
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     /**
      * @param args the command line arguments
