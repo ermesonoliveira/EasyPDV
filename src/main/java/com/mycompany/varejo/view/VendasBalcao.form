@@ -224,19 +224,21 @@
             <Component class="javax.swing.JButton" name="btnEncerrarVenda">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/accept.png"/>
+                  <Image iconType="2" name="C:\Users\Alexandra Melo\Documents\NetBeansProjects\EasyPDV\src\main\java\img\money_dollar.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="KeyEvent.VK_F1" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Encerrar Venda"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEncerrarVendaActionPerformed"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnEncerrarVendaKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/cart.png"/>
+                  <Image iconType="2" name="C:\Users\Alexandra Melo\Documents\NetBeansProjects\EasyPDV\src\main\java\img\cart.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar Produtos"/>
               </Properties>
@@ -244,7 +246,7 @@
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/delete.png"/>
+                  <Image iconType="2" name="C:\Users\Alexandra Melo\Documents\NetBeansProjects\EasyPDV\src\main\java\img\delete.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar Item"/>
               </Properties>
@@ -252,7 +254,7 @@
             <Component class="javax.swing.JButton" name="jButton5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/cancel.png"/>
+                  <Image iconType="2" name="C:\Users\Alexandra Melo\Documents\NetBeansProjects\EasyPDV\src\main\java\img\cancel.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar Venda"/>
               </Properties>
@@ -260,7 +262,7 @@
             <Component class="javax.swing.JButton" name="jButton6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/user_suit.png"/>
+                  <Image iconType="2" name="C:\Users\Alexandra Melo\Documents\NetBeansProjects\EasyPDV\src\main\java\img\user_suit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar Clientes"/>
               </Properties>
@@ -279,8 +281,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelSairMouseClicked"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="labelSairKeyPressed"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="labelSairKeyReleased"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -339,6 +339,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoProdutoActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodigoProdutoKeyPressed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

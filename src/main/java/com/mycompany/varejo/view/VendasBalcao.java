@@ -5,14 +5,16 @@
  */
 package com.mycompany.varejo.view;
 
-import com.mycompany.varejo.view.Home;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Action;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
 /**
@@ -34,6 +36,8 @@ public class VendasBalcao extends javax.swing.JFrame {
             }
         });
         txtCodigoProduto.requestFocus();
+        btnEncerrarVenda.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "F1");
+
     }
 
     /**
@@ -118,29 +122,25 @@ public class VendasBalcao extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnEncerrarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/accept.png"))); // NOI18N
+        btnEncerrarVenda.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\money_dollar.png")); // NOI18N
+        btnEncerrarVenda.setMnemonic(KeyEvent.VK_F1);
         btnEncerrarVenda.setText("Encerrar Venda");
         btnEncerrarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEncerrarVendaActionPerformed(evt);
             }
         });
-        btnEncerrarVenda.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnEncerrarVendaKeyPressed(evt);
-            }
-        });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cart.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\cart.png")); // NOI18N
         jButton3.setText("Consultar Produtos");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\delete.png")); // NOI18N
         jButton4.setText("Cancelar Item");
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancel.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\cancel.png")); // NOI18N
         jButton5.setText("Cancelar Venda");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user_suit.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\user_suit.png")); // NOI18N
         jButton6.setText("Consultar Clientes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -181,14 +181,6 @@ public class VendasBalcao extends javax.swing.JFrame {
                 labelSairMouseClicked(evt);
             }
         });
-        labelSair.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                labelSairKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                labelSairKeyReleased(evt);
-            }
-        });
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Easy PDV", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 0, 12)));
@@ -220,6 +212,11 @@ public class VendasBalcao extends javax.swing.JFrame {
         txtCodigoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoProdutoActionPerformed(evt);
+            }
+        });
+        txtCodigoProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodigoProdutoKeyPressed(evt);
             }
         });
 
@@ -342,14 +339,6 @@ public class VendasBalcao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void labelSairKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_labelSairKeyReleased
-
-    }//GEN-LAST:event_labelSairKeyReleased
-
-    private void labelSairKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_labelSairKeyPressed
-
-    }//GEN-LAST:event_labelSairKeyPressed
-
     private void labelSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelSairMouseClicked
         int dialogResult = JOptionPane.YES_NO_OPTION;
         dialogResult = JOptionPane.showConfirmDialog(null, "Você tem certeza que quer sair da tela de Vendas?", "Confirmação de saída", dialogResult);
@@ -357,6 +346,40 @@ public class VendasBalcao extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_labelSairMouseClicked
+
+    private void txtCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoProdutoActionPerformed
+
+    private void txtCodigoProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProdutoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
+            if (iu == null) {
+                iu = new InternalEscolherFinalizadoraVenda();
+                this.jDesktopPane1.add(iu);
+                iu.setVisible(true);
+                try {
+                    iu.setSelected(true);
+                } catch (PropertyVetoException ex) {
+                    Logger.getLogger(VendasBalcao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                iu.requestFocus();
+                iu.getTxtCod().requestFocus();
+                iu.toFront();
+            } else {
+                iu.dispose();
+                iu = new InternalEscolherFinalizadoraVenda();
+                this.jDesktopPane1.add(iu);
+                iu.setVisible(true);
+                try {
+                    iu.setSelected(true);
+                } catch (PropertyVetoException ex) {
+                    Logger.getLogger(VendasBalcao.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                iu.toFront();
+            }
+        }
+
+    }//GEN-LAST:event_txtCodigoProdutoKeyPressed
 
     private void btnEncerrarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarVendaActionPerformed
         if (iu == null) {
@@ -375,7 +398,7 @@ public class VendasBalcao extends javax.swing.JFrame {
             iu.dispose();
             iu = new InternalEscolherFinalizadoraVenda();
             this.jDesktopPane1.add(iu);
-            iu.setVisible(true);      
+            iu.setVisible(true);
             try {
                 iu.setSelected(true);
             } catch (PropertyVetoException ex) {
@@ -384,17 +407,7 @@ public class VendasBalcao extends javax.swing.JFrame {
             iu.toFront();
         }
 
-
     }//GEN-LAST:event_btnEncerrarVendaActionPerformed
-
-    private void txtCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoProdutoActionPerformed
-
-    private void btnEncerrarVendaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEncerrarVendaKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_F1)
-        	JOptionPane.showMessageDialog(null, "Pressionou F1!");
-    }//GEN-LAST:event_btnEncerrarVendaKeyPressed
 
     /**
      * @param args the command line arguments
