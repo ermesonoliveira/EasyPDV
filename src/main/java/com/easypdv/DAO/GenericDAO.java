@@ -1,9 +1,12 @@
 package com.easypdv.DAO;
 
 import com.easypdv.util.HibernateUtil;
+import com.easypdv.entidades.Usuario;
+import com.mycompany.varejo.util.JPAUtil;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.persistence.EntityManager;
 import org.hibernate.Transaction;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -20,25 +23,22 @@ public class GenericDAO<Entidade> {
 	}
 
 	
-	public Serializable salvar(Entidade entidade) {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		Transaction transacao = null;
+	public Usuario salvar(Entidade entidade) {
+		EntityManager em = JPAUtil.createEntityManager();
+                Usuario user = null;
 		try {
-			transacao = sessao.beginTransaction();
-			Serializable id = sessao.save(entidade);
-			System.out.println(id.toString());
-			transacao.commit();
-			return id;
-
-		} catch (RuntimeException erro) {
-			if (transacao != null) {
-				transacao.rollback();
-			}
-			throw erro;
+			em.getTransaction().begin();
+			user = (Usuario) em.merge(entidade);
+			em.getTransaction().commit();
+                        return user;
+                        
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
 		} finally {
-			sessao.close();
+			em.close();
 		}
-
+                return user;
 	}
 
 	@SuppressWarnings("unchecked")

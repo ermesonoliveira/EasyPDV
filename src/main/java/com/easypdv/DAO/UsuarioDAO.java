@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.easypdv.entidades;
+package com.easypdv.DAO;
 
-import java.io.Serializable;
-
+import com.easypdv.entidades.Usuario;
 
 /**
  *
  * @author Ermeson
  */
-
-public class EnumPerfilUsuario implements Serializable{
- 
-    public enum PerfilUsuario{
-        G, A, C
-    }
+public class UsuarioDAO extends GenericDAO<Usuario>{
+    
 }

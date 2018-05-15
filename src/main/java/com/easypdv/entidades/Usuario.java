@@ -5,8 +5,14 @@
  */
 package com.easypdv.entidades;
 
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 /**
  *
@@ -14,7 +20,8 @@ import javax.persistence.OneToMany;
  */
 @SuppressWarnings("serial")
 @Entity
-public class Usuario extends GenericDomain{
+@Table(name="usuario")
+public class Usuario implements Serializable{
 
     public String getNome() {
         return nome;
@@ -38,14 +45,6 @@ public class Usuario extends GenericDomain{
 
     public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
-    }
-
-    public EnumPerfilUsuario getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(EnumPerfilUsuario perfil) {
-        this.perfil = perfil;
     }
 
     public String getLogin() {
@@ -79,16 +78,31 @@ public class Usuario extends GenericDomain{
     public void setComissao(Comissao comissao) {
         this.comissao = comissao;
     }
-    
+    @Column(length=100)
     private String nome;
+    @Column(length=100)
     private String cpf;
+    @Column(length=100)
     private String nascimento;
-    private EnumPerfilUsuario perfil;
+    @Column(length=100)
     private String login;
+    @Column(length=100)
     private String senha;
+    @Column(length=100)
     private String usaComissao;
-    @OneToMany
+    @Column(length=100)
     private Comissao comissao;
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
    
     
 }

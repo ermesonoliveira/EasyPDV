@@ -8,13 +8,13 @@ import java.sql.SQLException;
 
 public class ConnectionDataBase {
 
-	private static final String URL_MYSQL = "jdbc:firebirdsql://"+ConfigBD.lerArquivo()+"/3050:C:/easypdv/";
+	private static final String URL_MYSQL = "jdbc:firebirdsql:"+ConfigBD.lerArquivo()+"/3050:C:/easypdv/BANCO.FDB";
 	
 	private static final String DRIVER_CLASS = "org.firebirdsql.jdbc.FBDriver";
 	
-	private static final String USER = "root";
+	private static final String USER = "SYSDBA";
 	
-	private static final String PASS = "root";
+	private static final String PASS = "masterkey";
 	
 	public static Connection getConnection(){
 		try{
