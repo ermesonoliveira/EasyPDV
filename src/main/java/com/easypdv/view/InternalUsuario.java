@@ -9,32 +9,38 @@ import com.easypdv.DAO.GenericDAO;
 import com.easypdv.DAO.UsuarioDAO;
 import com.easypdv.entidades.Usuario;
 import com.easypdv.entidades.EnumPerfilUsuario;
+import com.easypdv.tableModel.UsuarioTableModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 import javax.swing.AbstractAction;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
 /**
  *
  * @author Ermeson
  */
 public class InternalUsuario extends javax.swing.JInternalFrame {
+    private UsuarioTableModel model;
     InternalUsuario internal = null;
     Usuario user = new Usuario();
+
     /**
      * Creates new form InternalUsuario
      */
-    
-    
-        public InternalUsuario() {
+
+    public InternalUsuario() throws SQLException {
+        this.model = new UsuarioTableModel(UsuarioDAO.getInstance().buscar());
+        
         initComponents();
         ControlaEsc();
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((screen.width - this.getWidth())/2, (screen.height - this.getHeight() - this.getHeight()/3) );
+        this.setLocation((screen.width - this.getWidth()) / 2, (screen.height - this.getHeight() - this.getHeight() / 3));
         txtNome.setEditable(false);
         txtCPF.setEditable(false);
         txtNascimento.setEditable(false);
@@ -42,15 +48,15 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
         txtSenha.setEditable(false);
         btnEditar.setEnabled(false);
         
-        
-     
-        
-        
-        
+        table.setModel(model);
     }
-     public void recebeInstancia(InternalUsuario internal){
-         this.internal = internal;
-     }
+    
+    
+    
+
+    public void recebeInstancia(InternalUsuario internal) {
+        this.internal = internal;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,7 +91,7 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
 
         setTitle("Cadastro de Usuário");
         setAlignmentX(250.0F);
@@ -271,7 +277,7 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Pesquisa");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -290,8 +296,8 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setRowHeight(23);
-        jScrollPane2.setViewportView(jTable2);
+        table.setRowHeight(23);
+        jScrollPane2.setViewportView(table);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -353,9 +359,8 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
         btnEditar.setEnabled(true);
         user = new Usuario();
         zerarCampos();
-        
-        
-        
+
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void txtNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNascimentoActionPerformed
@@ -376,13 +381,12 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
         txtLogin.setEditable(false);
         txtSenha.setEditable(false);
         btnEditar.setEnabled(false);
-        
-        
-        
+
+
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-       UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDAO dao = new UsuarioDAO();
         user.setNome(txtNome.getText());
         user.setCpf(txtCPF.getText());
         user.setNascimento(txtNascimento.getText());
@@ -390,13 +394,12 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
         user.setSenha(txtSenha.getText());
         //System.out.println("imprimirrrrrr"+selectPerfil.getSelectedItem().toString());
         user.setPerfilUsuario(selectPerfil.getSelectedItem().toString());
-        System.out.println("imprimir"+selectPerfil.getSelectedItem());
+        System.out.println("imprimir" + selectPerfil.getSelectedItem());
         dao.salvar(user);
         zerarCampos();
-       
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
-         
-    
+
     public void ControlaEsc() {
         KeyStroke ks = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, true);
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(ks, "esc");
@@ -404,21 +407,20 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (JOptionPane.showConfirmDialog(null, "Deseja sair desta página?", "Fechar", JOptionPane.YES_NO_OPTION) == 0) {
-                   btnFecharActionPerformed(ae);
+                    btnFecharActionPerformed(ae);
                 }
             }
         });
-          
+
     }
-    
-    public void zerarCampos(){
+
+    public void zerarCampos() {
         txtNome.setText("");
         txtCPF.setText("");
         txtNascimento.setText("");
         txtLogin.setText("");
         txtSenha.setText("");
-     
-       
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -439,15 +441,14 @@ public class InternalUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JComboBox<String> selectPerfil;
+    private javax.swing.JTable table;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JFormattedTextField txtNascimento;
     private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
 }
-
-

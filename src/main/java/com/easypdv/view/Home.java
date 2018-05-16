@@ -5,6 +5,9 @@
  */
 package com.easypdv.view;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -287,10 +290,14 @@ public class Home extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
            if (menuUsuario == null){
-             menuUsuario = new InternalUsuario();
-             menuUsuario.recebeInstancia(menuUsuario);
-             painel.add(menuUsuario);
-             menuUsuario.setVisible(true);
+               try {
+                   menuUsuario = new InternalUsuario();
+                   menuUsuario.recebeInstancia(menuUsuario);
+                   painel.add(menuUsuario);
+                   menuUsuario.setVisible(true);
+               } catch (SQLException ex) {
+                   Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+               }
            }else{
                menuUsuario.setVisible(true);
            }
