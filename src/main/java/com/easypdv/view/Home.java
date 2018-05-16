@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.varejo.view;
+package com.easypdv.view;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +22,7 @@ public class Home extends javax.swing.JFrame {
         this.setExtendedState( MAXIMIZED_BOTH );
     }
     private VendasBalcao balcao;
+    InternalUsuario menuUsuario = null;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,8 +50,8 @@ public class Home extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         painel = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuPrincipal = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -117,7 +119,7 @@ public class Home extends javax.swing.JFrame {
             .addGap(0, 338, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cadastro");
+        menuCadastro.setText("Cadastro");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItem2.setText("Usuários");
@@ -126,7 +128,7 @@ public class Home extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuCadastro.add(jMenuItem2);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         jMenuItem3.setText("Fornecedores");
@@ -135,7 +137,7 @@ public class Home extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menuCadastro.add(jMenuItem3);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         jMenuItem5.setText("Clientes");
@@ -144,7 +146,7 @@ public class Home extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        menuCadastro.add(jMenuItem5);
 
         jMenu15.setText("Produtos");
 
@@ -179,11 +181,11 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu15.add(jMenuItem21);
 
-        jMenu1.add(jMenu15);
+        menuCadastro.add(jMenu15);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         jMenuItem7.setText("Estoque");
-        jMenu1.add(jMenuItem7);
+        menuCadastro.add(jMenuItem7);
 
         jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         jMenuItem13.setText("Formas de Pagamento");
@@ -192,9 +194,9 @@ public class Home extends javax.swing.JFrame {
                 jMenuItem13ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem13);
+        menuCadastro.add(jMenuItem13);
 
-        jMenuBar1.add(jMenu1);
+        menuPrincipal.add(menuCadastro);
 
         jMenu10.setText("Movimento");
 
@@ -221,14 +223,14 @@ public class Home extends javax.swing.JFrame {
         });
         jMenu10.add(jMenuItem20);
 
-        jMenuBar1.add(jMenu10);
+        menuPrincipal.add(jMenu10);
 
         jMenu3.setText("Relatórios");
 
         jMenuItem12.setText("jMenuItem12");
         jMenu3.add(jMenuItem12);
 
-        jMenuBar1.add(jMenu3);
+        menuPrincipal.add(jMenu3);
 
         jMenu14.setText("Financeiro");
 
@@ -243,9 +245,9 @@ public class Home extends javax.swing.JFrame {
         jMenuItem16.setText("A receber");
         jMenu14.add(jMenuItem16);
 
-        jMenuBar1.add(jMenu14);
+        menuPrincipal.add(jMenu14);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,9 +286,18 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-           InternalUsuario iu = new InternalUsuario();
-           painel.add(iu);
-           iu.setVisible(true);
+           if (menuUsuario == null){
+             menuUsuario = new InternalUsuario();
+             menuUsuario.recebeInstancia(menuUsuario);
+             painel.add(menuUsuario);
+             menuUsuario.setVisible(true);
+           }else{
+               menuUsuario.setVisible(true);
+           }
+          
+           
+         
+           
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -353,7 +364,6 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
@@ -367,7 +377,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
@@ -392,6 +401,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenuBar menuPrincipal;
     private javax.swing.JPanel painel;
     // End of variables declaration//GEN-END:variables
 }

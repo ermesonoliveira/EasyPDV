@@ -8,9 +8,14 @@ package com.easypdv.entidades;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -18,11 +23,23 @@ import javax.persistence.Table;
  *
  * @author Ermeson
  */
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name="usuario")
 public class Usuario implements Serializable{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -70,15 +87,17 @@ public class Usuario implements Serializable{
     public void setUsaComissao(String usaComissao) {
         this.usaComissao = usaComissao;
     }
-
-    public Comissao getComissao() {
-        return comissao;
+    public String getPerfilUsuario() {
+        return perfilUsuario;
     }
 
-    public void setComissao(Comissao comissao) {
-        this.comissao = comissao;
+    public void setPerfilUsuario(String perfilUsuario) {
+        this.perfilUsuario = perfilUsuario;
     }
+    
+     
     @Column(length=100)
+    private String perfilUsuario;
     private String nome;
     @Column(length=100)
     private String cpf;
@@ -90,19 +109,9 @@ public class Usuario implements Serializable{
     private String senha;
     @Column(length=100)
     private String usaComissao;
-    @Column(length=100)
-    private Comissao comissao;
-     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
-
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
+   
+    
+     
    
     
 }

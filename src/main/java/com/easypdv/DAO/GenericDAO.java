@@ -2,14 +2,16 @@ package com.easypdv.DAO;
 
 import com.easypdv.util.HibernateUtil;
 import com.easypdv.entidades.Usuario;
-import com.mycompany.varejo.util.JPAUtil;
+import com.easypdv.util.JPAUtil;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import org.hibernate.Transaction;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -23,12 +25,12 @@ public class GenericDAO<Entidade> {
 	}
 
 	
-	public Usuario salvar(Entidade entidade) {
+	public Entidade salvar(Entidade entidade) {
 		EntityManager em = JPAUtil.createEntityManager();
-                Usuario user = null;
+                Entidade user = null;
 		try {
 			em.getTransaction().begin();
-			user = (Usuario) em.merge(entidade);
+			user =  em.merge(entidade);
 			em.getTransaction().commit();
                         return user;
                         
@@ -43,88 +45,36 @@ public class GenericDAO<Entidade> {
 
 	@SuppressWarnings("unchecked")
 	public List<Entidade> listar() {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		try {
-			Criteria consulta = sessao.createCriteria(classe);
-			List<Entidade> resultado = consulta.list();
-			return resultado;
-		} catch (RuntimeException erro) {
-			throw erro;
-		} finally {
-			sessao.close();
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	public Entidade buscar(Long codigo) {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		try {
-			Criteria consulta = sessao.createCriteria(classe);
-			consulta.add(Restrictions.idEq(codigo));
-			Entidade resultado = (Entidade) consulta.uniqueResult();
-			return resultado;
-		} catch (RuntimeException erro) {
-			throw erro;
-		} finally {
-			sessao.close();
-		}
+           
+           return null;
 	}
 
 	public void excluir(Entidade entidade) {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		Transaction transacao = null;
+		EntityManager em = JPAUtil.createEntityManager();
 		try {
-			transacao = sessao.beginTransaction();
-			sessao.delete(entidade);
-			transacao.commit();
-
-		} catch (RuntimeException erro) {
-			if (transacao != null) {
-				transacao.rollback();
-			}
-			throw erro;
+        		em.getTransaction().begin();
+			em.remove(entidade);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
 		} finally {
-			sessao.close();
-		}
-
-	}
-	public void editar(Entidade entidade) {
-
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		Transaction transacao = null;
-		try {
-			transacao = sessao.beginTransaction();
-			sessao.update(entidade);
-			transacao.commit();
-
-		} catch (RuntimeException erro) {
-			if (transacao != null) {
-				transacao.rollback();
-			}
-			throw erro;
-		} finally {
-			sessao.close();
+			em.close();
 		}
 	}
 	
-	public Object merge(Entidade entidade) {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
-		Transaction transacao = null;
+	public void merge(Entidade entidade) {
+		EntityManager em = JPAUtil.createEntityManager();
 		try {
-			transacao = sessao.beginTransaction();
-			Object objeto = sessao.merge(entidade);
-			transacao.commit();
-			return objeto;
-
-		} catch (RuntimeException erro) {
-			if (transacao != null) {
-				transacao.rollback();
-			}
-			throw erro;
+			em.getTransaction().begin();
+			em.merge(entidade);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
 		} finally {
-			sessao.close();
-		}
-
+			em.close();
+                }
 	}
 
 	public Class<Entidade> getClasse() {

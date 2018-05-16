@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.varejo.view;
+package com.easypdv.view;
 
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
@@ -122,7 +122,6 @@ public class VendasBalcao extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnEncerrarVenda.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\money_dollar.png")); // NOI18N
         btnEncerrarVenda.setMnemonic(KeyEvent.VK_F1);
         btnEncerrarVenda.setText("Encerrar Venda");
         btnEncerrarVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -131,16 +130,12 @@ public class VendasBalcao extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\cart.png")); // NOI18N
         jButton3.setText("Consultar Produtos");
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\delete.png")); // NOI18N
         jButton4.setText("Cancelar Item");
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\cancel.png")); // NOI18N
         jButton5.setText("Cancelar Venda");
 
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alexandra Melo\\Documents\\NetBeansProjects\\EasyPDV\\src\\main\\java\\img\\user_suit.png")); // NOI18N
         jButton6.setText("Consultar Clientes");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -170,7 +165,7 @@ public class VendasBalcao extends javax.swing.JFrame {
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         labelSair.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N

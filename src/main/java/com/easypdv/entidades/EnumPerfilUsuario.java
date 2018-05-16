@@ -5,7 +5,7 @@
  */
 package com.easypdv.entidades;
 
-import java.io.Serializable;
+
 
 
 /**
@@ -13,9 +13,26 @@ import java.io.Serializable;
  * @author Ermeson
  */
 
-public class EnumPerfilUsuario implements Serializable{
- 
-    public enum PerfilUsuario{
-        G, A, C
+public enum EnumPerfilUsuario{
+    ADMINISTRADOR("Administrador"), GERENTE("Gerente"), CAIXA("Caixa");
+    
+    private String descricao;
+    
+    private EnumPerfilUsuario(String descricao){
+        this.descricao = descricao;
     }
+    
+    
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    
+
+   
 }

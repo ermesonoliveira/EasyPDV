@@ -1,4 +1,4 @@
-package com.mycompany.varejo.util;
+package com.easypdv.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
